@@ -22,8 +22,8 @@ A PHP class to fetch asynchronously items from the Steam Market
  ```
  2. Fetch content live or save it into your database
 ```
-$sm->getItems();    # Store results into DB
-$sm->storeIntoDb(); # Live fetching
+$sm->getItems();    # Live fetching
+$sm->storeIntoDb(); # Store results into DB
 ```
 
 ## Live fetching
@@ -41,7 +41,7 @@ Resulting bjects will be an array containing a set of items defined as follows:
 
 ## Persistence on DB
 
- Is it possible to store fetched items into a predefined set of tables. To store them execute:
+ Is it possible to store fetched items for <pageNum> pages, based on the number of pages you specify in the creation call,  into a predefined table. To store them execute:
 ```
 $sm->storeIntoDb(<pageNum>); # When not specified pageNum it's set to 1st page
 ```
@@ -71,7 +71,7 @@ A single table it's created following this structure :
 
 ## Limitations
 
-Since Steam website can limitate your call/access to their market page a waiting time it's set ( 1 second ) between each call. You can easily adjust it changing this value by editing its value on SteamMarketer.php@row:78. We suggest to keep as it is if you want to fetch several page ( 5-10 at once ). If you want to fetch just 1 page you can lower it. Be aware that when Steam limits it, script won't be able to fetch data from the website and you will have to wait before being able to them
+Since Steam website can limitate your call/access to their market page a waiting time it's set ( 1 second ) between each call. You can easily adjust it changing this value by editing its value on SteamMarketer.php@row:78. We suggest to keep as it is if you want to fetch several page ( 5-10 at once ). If you want to fetch just 1 page you can lower it. Be aware that when Steam limits it, script won't be able to fetch data from the website and you will have to wait before being able to read them
 
 # DISCLAIMER
 
