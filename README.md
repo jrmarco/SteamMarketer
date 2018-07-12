@@ -4,6 +4,7 @@ A PHP class to fetch asynchronously items from the Steam Market
 ## Requirements
 
 - PHP 5.6 or greater
+- cURL (php-curl) library (optional)
 - MySql database ( optional )
 
 ## Installation
@@ -12,6 +13,13 @@ A PHP class to fetch asynchronously items from the Steam Market
  2. Place the SteamMarketer.php and config.php files in the same folder you like
  3. Include the SteamMarketer.php inside a dedicated page or in any place of your code
  4. Change the setting into the config.php to match your database installation
+ 
+## Data and information
+
+All data coming from this class it is publicly accessible. We do not :
+- use any illegal action to fetch them
+- interfere with service or security service of the website
+- steal this data from any protected section of the website 
 
 ## Run the tool
 
@@ -76,3 +84,5 @@ Since Steam website can limitate your call/access to their market page a waiting
 # DISCLAIMER
 
  All contents fetched,loaded,read from Steam are protected by copyright and trademarks by Steam, the software owner and/or third party license . Please check [Legal](http://store.steampowered.com/legal/), [Privacy Policy](http://store.steampowered.com/privacy_agreement/), [User Agreement](http://store.steampowered.com/subscriber_agreement/) for further information
+ 
+ I'm not responsible for any issue nor any kind of legal affair that this component could or would cause at your person/business.
