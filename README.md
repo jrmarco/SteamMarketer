@@ -1,4 +1,4 @@
-# SteamMarketer
+# SteamMarketer v0.3
 A PHP class to fetch asynchronously items from the Steam Market
 
 ## Requirements
@@ -24,34 +24,48 @@ All data coming from this class it is publicly accessible. We do not :
 ## Run the tool
 
  1. Create a new instance of the SteamMarketer : 
- ```
- $sm = new SteamMarketer();
- $sm = new SteamMarketer(<pageNum>); # When not specified pageNum it's set to 1st page
- ```
+     ```
+     $sm = new SteamMarketer();
+        OR
+     $sm = new SteamMarketer(pageNum); # When not specified pageNum it's set to 1st page
+     ```
  2. Fetch content live or save it into your database
-```
-$sm->getItems();    # Live fetching
-$sm->storeIntoDb(); # Store results into DB
-```
+ 
+    ```
+        $sm->getItems(searchString, imgSize);       # Live fetching
+        $sm->storeIntoDb(searchString, start, count); # Store results into DB
+    ```
+ 
+ 3. Fetch content live or save it into your database using cURL:
+    ```
+        $sm->getItems(searchString, imgSize)            # Live fetching via curl
+        $sm->storeIntoDbCURL(searchString, start, count); # Store results into DB        
+    ```
+    
+    Start it's the first element to be fetched, count it's the number of element after the starting point 
 
+ 4. Image size accept 3 type : small, medium, big as option
+   
 ## Live fetching
 
 When using live fetching, tool reads the Steam market page based on the number of pages you specify in the creation call.
 
 Resulting bjects will be an array containing a set of items defined as follows:
 ```
-            $sm->name     : Item name
-            $sm->game     : Game that owns the item
-            $sm->url      : Item market page url
-            $sm->quantity : Items available on the market at that moment
-            $sm->price    : Item starting price
+    $sm->name     : Item name
+    $sm->game     : Game that owns the item
+    $sm->url      : Item market page url
+    $sm->quantity : Items available on the market at that moment
+    $sm->price    : Item starting price
 ```
 
 ## Persistence on DB
 
  Is it possible to store fetched items for <pageNum> pages, based on the number of pages you specify in the creation call,  into a predefined table. To store them execute:
 ```
-$sm->storeIntoDb(<pageNum>); # When not specified pageNum it's set to 1st page
+$sm->storeIntoDb(searchString, start, end);
+    OR
+$sm->storeIntoDbCURL(searchString, start, end);
 ```
 The function takes care of all the necessary steps to be able to store all information. Prior this, you have to define in the config.php file, your setting to be able to communicate with the database: 
  1. Choose your database deamon driver : default value mysql ( leave this if you don't know what to do )
